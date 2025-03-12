@@ -15,7 +15,9 @@ currentFolder=pwd;
 addpath(strcat(currentFolder,'/Model'),strcat(currentFolder,'/HelperFunctions'))
 
 partNum = 2; % The part of the core coursework that is being worked on
-useSecondEllipse = 1; % Introduce a second ellipse to the course for part 2
+shapeNum = 4 ;
+
+useSecondEllipse = 0; % Introduce a second ellipse to the course for part 2
 
 %% Create the shape to test on
 testCourse = defaultCourse( 0, partNum );
@@ -30,6 +32,97 @@ if( partNum == 2 && useSecondEllipse == 1 )
     ellipse.yc = 0.35;
     testCourse.shape.constraints.ellipses{2} = ellipse;
 end
+
+% shape 1
+if( partNum == 2 && shapeNum == 1 )
+    testCourse.shape.constraints.rect.bot = [0.00, 0.05;
+                                             0.25, 0.30;
+                                             0.50, 0.05;
+                                             0.25, -0.20];
+    testCourse.shape.constraints.rect.h=-0.4;
+
+    % Define the new ellipse
+    ellipse.a  = 0.3;
+    ellipse.b  = 0.3;
+    ellipse.h  = -0.35;
+    ellipse.xc = 0.25;
+    ellipse.yc = -0.23;    
+    testCourse.shape.constraints.ellipses{1} = ellipse;
+
+    testCourse.shape.start  = [0.05, 0.05, -0.05];
+    testCourse.shape.target = [0.45, 0.05, -0.30];
+
+
+
+end
+
+% shape 2
+
+if( partNum == 2 && shapeNum == 2 )
+    testCourse.shape.constraints.rect.bot = [0.00, 0.05;
+                            0.25, 0.30;
+                            0.50, 0.05;
+                            0.25, -0.20];
+    testCourse.shape.constraints.rect.h=-0.4;
+
+    ellipse.a  = 0.3;
+    ellipse.b  = 0.3;
+    ellipse.h  = -0.35;
+    ellipse.xc = 0.25;
+    ellipse.yc = -0.23;
+    testCourse.shape.constraints.ellipses{1} = ellipse;
+    % Define the 2 ellipse
+    ellipse.h  = -0.2;
+    ellipse.a  = 0.3;
+    ellipse.b  = 0.17;
+    ellipse.xc = 0.25;
+    ellipse.yc = 0.35;
+    testCourse.shape.constraints.ellipses{2} = ellipse;
+
+    testCourse.shape.start  = [0.05, 0.05, -0.05];
+    testCourse.shape.target = [0.45, 0.05, -0.30];
+
+end
+
+
+% shape 3
+if( partNum == 2 && shapeNum == 3 )
+    testCourse.shape.constraints.rect.bot = [0, 0.05;
+                                             0.45, 0.5;
+                                             0.5, 0.45;
+                                             0.05, 0];
+    testCourse.shape.constraints.rect.h=-0.6;
+    testCourse.shape.start=[0.05,0.05,-0.05];
+    testCourse.shape.target = [0.45, 0.45, -0.35];
+end
+
+% shape 4
+if( partNum == 2 && shapeNum == 4 )
+    testCourse.shape.constraints.rect.bot = [0.00, 0.05;
+                            0.25, 0.30;
+                            0.50, 0.05;
+                            0.25,-0.20];
+    testCourse.shape.constraints.rect.h=-0.4;
+    ellipse.a  = 0.2;
+    ellipse.b  = 0.4;
+    ellipse.h  = -0.35;
+    ellipse.xc = 0.25;
+    ellipse.yc = -0.23;
+    testCourse.shape.constraints.ellipses{1} = ellipse;
+    ellipse.h  = -0.35;
+    ellipse.a  = 0.25;
+    ellipse.b  = 0.16;
+    ellipse.xc = 0.25;
+    ellipse.yc = 0.35;
+    testCourse.shape.constraints.ellipses{2} = ellipse;
+    testCourse.shape.target  = [0.05, 0.05, -0.05];
+    testCourse.shape.start = [0.35, -0.08, -0.39];
+
+end
+
+
+
+
 
 %% Load the parameters for the Simulation model & Perturb the parameters
 % The following parameters could all be perturbed:
