@@ -16,6 +16,64 @@ A simple quadrotor flight simulator featuring a nonlinear MPC controller based o
 
 ---
 
+## Simulation Results
+
+### Dashboard (states, inputs, computation time)
+
+The analysis script produces a dashboard of time-series plots: positions, velocities, attitudes, angular rates, the four motor inputs, and MPC computation time per step.
+
+![MPC simulation dashboard](assets/dashboard.png)
+
+*Dashboard: UAV states, control inputs (R1–R4), and MPC computation time.*
+
+---
+
+### Course results (3D trajectory)
+
+Examples of 3D trajectory plots with rectangular bounds and elliptical obstacles. The title shows the number of **constraint violations** (0 = success).
+
+<table>
+  <tr>
+    <td>
+      <img src="assets/1.jpg" alt="Course result: 0 violations"/><br>
+      <sub>
+        <b>0 violations</b><br>
+        UAV trajectory stays inside the constrained volume.<br>
+        <i>(Cube = target area, Circle = start position)</i>
+      </sub>
+    </td>
+    <td>
+      <img src="assets/2.jpg" alt="Course result: 0 violations"/><br>
+      <sub>
+        <b>0 violations</b><br>
+        Path confined within the main volume and avoiding side zones.<br>
+        <i>(Cube = target area, Circle = start position)</i>
+      </sub>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <img src="assets/3.jpg" alt="Course result: 0 violations"/><br>
+      <sub>
+        <b>0 violations</b><br>
+        UAV moves from the start position (circle) to the target area (cube), all within bounds.
+      </sub>
+    </td>
+    <td>
+      <img src="assets/4.jpg" alt="Course result: 1 violation"/><br>
+      <sub>
+        <b>1 violation</b><br>
+        Example with one constraint breach (for tuning or comparison).<br>
+        <i>(Cube = target area, Circle = start position)</i>
+      </sub>
+    </td>
+  </tr>
+</table>
+
+
+
+---
+
 ## Quick Start
 
 ### Requirements
@@ -73,60 +131,6 @@ NewbieMPC-Drone/
 - **State:** 12-DOF — position (x,y,z), orientation (φ,θ,ψ), linear velocity (u,v,w), angular velocity (p,q,r).  
 - **Input:** 4-D — normalized motor commands in [0, 1].  
 - **Controller:** `myMPController` uses nonlinear MPC with `QuadrotorStateFcnBase` for prediction, box + ellipse constraints, and `fmincon` to compute the control.
-
----
-
-## Simulation Results
-
-### Dashboard (states, inputs, computation time)
-
-The analysis script produces a dashboard of time-series plots: positions, velocities, attitudes, angular rates, the four motor inputs, and MPC computation time per step.
-
-![MPC simulation dashboard](assets/dashboard.png)
-
-*Dashboard: UAV states, control inputs (R1–R4), and MPC computation time.*
-
----
-
-### Course results (3D trajectory)
-
-Examples of 3D trajectory plots with rectangular bounds and elliptical obstacles. The title shows the number of **constraint violations** (0 = success).
-
-<table>
-  <tr>
-    <td>
-      <img src="assets/1.jpg" alt="Course result: 0 violations"/><br>
-      <sub>
-        <b>0 violations</b><br>
-        UAV trajectory stays inside the constrained volume.<br>
-        <i>(Cube = target area, Circle = start position)</i>
-      </sub>
-    </td>
-    <td>
-      <img src="assets/2.jpg" alt="Course result: 0 violations"/><br>
-      <sub>
-        <b>0 violations</b><br>
-        Path confined within the main volume and avoiding side zones.<br>
-        <i>(Cube = target area, Circle = start position)</i>
-      </sub>
-    </td>
-    <td>
-      <img src="assets/3.jpg" alt="Course result: 0 violations"/><br>
-      <sub>
-        <b>0 violations</b><br>
-        UAV moves from the start position (circle) to the target area (cube), all within bounds.
-      </sub>
-    </td>
-    <td>
-      <img src="assets/4.jpg" alt="Course result: 1 violation"/><br>
-      <sub>
-        <b>1 violation</b><br>
-        Example with one constraint breach (for tuning or comparison).<br>
-        <i>(Cube = target area, Circle = start position)</i>
-      </sub>
-    </td>
-  </tr>
-</table>
 
 
 ---
