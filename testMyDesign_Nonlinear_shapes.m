@@ -15,7 +15,7 @@ currentFolder=pwd;
 addpath(strcat(currentFolder,'/Model'),strcat(currentFolder,'/HelperFunctions'))
 
 partNum = 2; % The part of the core coursework that is being worked on
-shapeNum = 4 ;
+shapeNum = 4;
 
 useSecondEllipse = 0; % Introduce a second ellipse to the course for part 2
 
